@@ -179,3 +179,18 @@ public class BankApp {
         return null;
     }
 }
+
+private static void displayTransactionHistory() {
+        User user = findUser();
+        if (user != null) {
+            user.displayAccounts();
+            System.out.print("İşlem geçmişini görmek istediğiniz hesap numarasını seçin: ");
+            int accountIndex = scanner.nextInt() - 1;
+            if (accountIndex >= 0 && accountIndex < user.getAccounts().size()) {
+                user.getAccounts().get(accountIndex).displayTransactions();
+            } else {
+                System.out.println("Geçersiz hesap numarası.");
+            }
+        }
+    }
+}
